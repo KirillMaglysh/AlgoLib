@@ -8,16 +8,15 @@
 */
 
 #include <vector>
-#include <iostream>
 
 using namespace std;
 
-class SparseTableMax {
+class SparseTable {
 private:
     vector<vector<int>> st;
     vector<int> log2;
 public:
-    explicit SparseTableMax(vector<int>& src) {
+    explicit SparseTable(vector<int>& src) {
         int n = int(src.size());
         log2.resize(n + 1);
         for (int i = 2; i <= n; i++) {
