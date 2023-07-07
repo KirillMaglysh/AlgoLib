@@ -8,7 +8,6 @@
 */
 
 #include <vector>
-#include <cassert>
 
 using namespace std;
 
@@ -83,14 +82,6 @@ private:
         }
     }
 
-    void checkBorders(ll pos) {
-        assert(0 <= pos && pos < sz);
-    }
-
-    void checkBorders(ll l, ll r) {
-        assert(0 <= l && l <= r && r < sz);
-    }
-
     void push(ll root, ll l, ll r) {
         if (!tree[root].lazy) {
             return;
@@ -137,8 +128,10 @@ private:
         ll rRoot = (root << 1) + 2;
         if (sR <= m) {
             add(lRoot, l, m, sL, sR, val);
+            push(rRoot, m + 1, r);
         } else if (m < sL) {
             add(rRoot, m + 1, r, sL, sR, val);
+            push(lRoot, l, m);
         } else {
             add(lRoot, l, m, sL, sR, val);
             add(rRoot, m + 1, r, sL, sR, val);
@@ -178,37 +171,30 @@ public:
     }
 
     ll getMx(ll l, ll r) {
-        checkBorders(l, r);
         return get(0, 0, sz - 1, l, r).mx;
     }
 
     ll getMn(ll l, ll r) {
-        checkBorders(l, r);
         return get(0, 0, sz - 1, l, r).mn;
     }
 
     ll getSum(ll l, ll r) {
-        checkBorders(l, r);
         return get(0, 0, sz - 1, l, r).sum;
     }
 
     ll getVal(ll pos) {
-        checkBorders(pos);
         return getVal(0, 0, sz - 1, pos).sum;
     }
 
     void add(ll l, ll r, ll val) {
-        checkBorders(l, r);
         add(0, 0, sz - 1, l, r, val);
     }
 
     void add(ll pos, ll val) {
-        checkBorders(pos);
         add(pos, pos, val);
     }
 
     void set(ll pos, ll val) {
-        checkBorders(pos);
         set(0, 0, sz - 1, pos, val);
     }
 };
