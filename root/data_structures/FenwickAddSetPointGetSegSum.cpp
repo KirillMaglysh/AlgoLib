@@ -2,7 +2,7 @@
  * Realization of Fenwick tree data structure in C++ for ADD/SET in point and sum query on segment.
  *
  * TIME: O(N) building + O(logN) ask
- * NOTE: ask is very fast, much more faster than SegmentTree or Binary Trees
+ * NOTE: ask is very fast, much more than SegmentTree or Binary Trees
  * Memory: N
  *
  * @author Kirill_Maglysh
