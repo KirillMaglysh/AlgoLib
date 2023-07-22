@@ -77,6 +77,6 @@ public:
     }
 
     int dist(int v, int u) {
-        return depth[v] + depth[u] - 2 * lca(v, u);
+        return depth[v] + depth[u] - 2 * depth[lca(v, u)];
     }
 };
